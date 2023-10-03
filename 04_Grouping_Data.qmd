@@ -10,7 +10,7 @@ format:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+
 
 # Load the packages we'll need
 # Remember, think of this like packing for our trip
@@ -30,11 +30,18 @@ First, let's load the New York to Sarasota flight data we saved in the last scri
 
 Let's also walk through the visual wizard available in RStudio for importing csv and Excel files.
 
-```{r}
 
-srqflights <- read_excel("data/sarasota_q1_flights.xlsx")
 
-srqflights
+```{r} 
+library(readxl)
+sarasota_q1_flights <- read_excel("data/sarasota_q1_flights.xlsx", 
+    sheet = "Sheet1")
+View(sarasota_q1_flights)
+
+
+flights_singleairport <- read_excel("data/sarasota_q1_flights.xlsx")
+
+onecityflights
 ```
 
 Great, now we have our several hundred NYC to Sarasota flights for each day in the first quarter.
@@ -43,10 +50,8 @@ All of our previous methods of filtering and sorting still work here too, of cou
 
 ```{r}
 
-srqflights %>% 
-  filter(origin == "LGA",
-         month == 1,
-         sched_dep_time < 1200)
+srqflights 
+  filter(origin == "LGA", month == 1, sched_dep_time < 1200)
 
 
 ```
