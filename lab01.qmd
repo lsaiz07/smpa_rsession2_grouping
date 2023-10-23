@@ -61,7 +61,12 @@ glimpse(wv_winred_contribs)
 
 ```{r}
 
-
+wv_winred_contribs %>%
+  group_by(city)%>%
+  summarize(total_contribs = n(
+    
+  )%>%
+    arrange(desc(total_contribs))
 
 
 
